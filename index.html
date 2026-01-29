@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FastPayment | Mistura de Luz</title>
+      <script type="module" crossorigin src="/agenda/assets/index-ChwyRCgc.js"></script>
+      <link rel="stylesheet" crossorigin href="/agenda/assets/index-4mTnaqK1.css">
+    </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased">
+    
+    <div id="app" class="min-h-screen p-4 md:p-8">
+      <main class="w-full max-w-6xl mx-auto">
+        
+        <section id="login" class="hidden max-w-md mx-auto bg-white p-8 rounded-3xl shadow-2xl border border-slate-100 space-y-6 my-20">
+          <div class="text-center">
+            <h1 class="text-3xl font-black text-slate-900">Admin Login</h1>
+            <p class="text-slate-500 mt-2">Acesse o painel de controle</p>
+          </div>
+          <div class="space-y-4">
+            <input type="email" id="admin-email" placeholder="E-mail" class="w-full border rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="password" id="admin-password" placeholder="Senha" class="w-full border rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+            <button onclick="makeLogin()" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition-all">
+              Entrar no Painel
+            </button>
+          </div>
+        </section>
+
+        <section id="step-selection" class="hidden space-y-8">
+          <header class="text-center mb-10">
+            <h1 class="text-4xl font-black text-slate-900 tracking-tight">FastPayment</h1>
+            <p class="text-slate-500 mt-2 text-lg">Selecione o evento desejado para prosseguir</p>
+          </header>
+          <div id="events-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="col-span-full text-center py-10 text-slate-400 font-medium">
+              Buscando horários disponíveis na agenda...
+            </div>
+          </div>
+        </section>
+
+        <section id="step-1" class="hidden max-w-md mx-auto bg-white p-8 rounded-3xl shadow-2xl border border-slate-100 space-y-6">
+          <h2 class="text-2xl font-bold text-center text-slate-800">Identificação</h2>
+          <div class="space-y-4">
+            <input type="text" id="user-name" placeholder="Nome Completo" class="w-full border rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="tel" id="user-phone" placeholder="WhatsApp (DDD + Número)" class="w-full border rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+            <input type="email" id="email" placeholder="Seu melhor e-mail" class="w-full border rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+            
+            <button id="btn-send-otp" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-blue-600 transition-all shadow-lg">
+              Validar E-mail e Prosseguir →
+            </button>
+          </div>
+          <div id="message" class="hidden text-center text-sm font-medium p-3 rounded-lg"></div>
+        </section>
+
+        <section id="step-2" class="hidden max-w-md mx-auto bg-white p-8 rounded-3xl shadow-2xl border border-slate-100 space-y-6">
+          <h2 class="text-2xl font-bold text-center text-slate-800">Validar Código</h2>
+          <p class="text-center text-slate-500 text-sm">Insira o código de 6 dígitos enviado ao seu e-mail</p>
+          <div class="space-y-4">
+            <input type="text" id="otp-code" maxlength="6" placeholder="000000" class="w-full text-center text-4xl font-black border rounded-xl p-3 tracking-widest focus:ring-2 focus:ring-blue-500 outline-none">
+            
+            <button id="btn-verify-otp" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition-all shadow-lg">
+              Verificar Código
+            </button>
+            
+            <button id="btn-back" class="w-full text-slate-400 hover:text-slate-600 text-sm font-medium transition-colors" onclick="window.location.reload()">
+              ← Voltar para a Agenda
+            </button>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <div id="modal-container" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+      <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl transform transition-all scale-95 opacity-0 duration-300" id="modal-content">
+        <div class="flex items-center justify-between p-6 border-b border-slate-100">
+          <h3 class="text-xl font-bold text-slate-800" id="modal-title">Título</h3>
+          <button id="close-modal" class="text-slate-400 hover:text-slate-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="p-6" id="modal-body"></div>
+      </div>
+    </div>
+
+  </body>
+</html>
